@@ -2,7 +2,7 @@
 const isPositive = (num) => {
   if (num > 0) {
     console.log(num + " is positive number");
-  } else if (num > 0) {
+  } else if (num < 0) {
     console.log(num + " is negative number");
   } else {
     console.log(num + " is neither positive nor negative number");
