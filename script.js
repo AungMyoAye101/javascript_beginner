@@ -40,3 +40,5 @@ const guessNum = (num) => {
     console.log("Congratulatons! your answer is correct");
   }
 };
+let str = "abc";
+console.log(str.split(" "));
