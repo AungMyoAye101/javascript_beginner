@@ -23,3 +23,4 @@ const employee = [
 ];
 const sumAll = employee[0].salary + employee[1].salary + employee[2].salary;
 console.log(sumAll);
+employee.push({ name: "Stussy", salary: 120 });
