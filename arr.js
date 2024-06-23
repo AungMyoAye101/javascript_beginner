@@ -1,6 +1,7 @@
 const student = {
   name: "Mg Mg",
   age: 6,
+  grade: "",
 };
 
 const gradeCalulator = () => {
