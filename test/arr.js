@@ -106,4 +106,6 @@ const addSubject = (student, subject) => {
   }
   console.log(student);
 };
+
 addSubject(student, "History");
+console.log(student);

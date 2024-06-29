@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validator</title>
+    <style>
+      body {
+        background-color: #222;
+        margin: 0;
+        padding: 0;
+      }
+      section {
+        max-width: 400px;
+        border-radius: 10px;
+        margin: 20px auto;
+        background-color: #f7f7f7;
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        text-align: center;
+        gap: 4px;
+      }
+
+      .input-con {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        margin-bottom: 4px;
+      }
+      input {
+        border: none;
+        outline: none;
+        padding: 6px;
+        font-size: 1rem;
+        color: sliver;
+        border-radius: 4px;
+        box-shadow: 1px 1px 2px #3333337c;
+      }
+      span {
+        font-size: 0.8rem;
+        visibility: hidden;
+      }
+      .error {
+        color: red;
+      }
+      button {
+        font-size: 1rem;
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 20px;
+        background-color: skyblue;
+        color: white;
+      }
+      button:hover {
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>Sign Up</h1>
+      <form action="#" id="form-con">
+        <div class="input-con" id="name-input">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Jhon Doe" />
+          <span id="nameError" class="error"
+            >Username must have 3 characters long</span
+          >
+        </div>
+        <div class="input-con" id="email-input">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="someone@gmail.com"
+          />
+          <span id="emailError" class="error"
+            >Enter a valid email address.</span
+          >
+        </div>
+        <div class="input-con" id="password-input">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="********"
+          />
+          <span id="passwordError" class="error"
+            >Password must have at least 8 characters long, contain
+            (AB,ab,12)</span
+          >
+        </div>
+
+        <button type="submit">Sing In</button>
+      </form>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

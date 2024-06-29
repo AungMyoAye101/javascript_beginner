@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Content Update</title>
+    <style>
+      body {
+        background-color: #333;
+        color: #f7f7f7;
+      }
+      button {
+        font-size: 1.1rem;
+        padding: 6px 16px;
+        border: 1px solid cyan;
+        border-radius: 10px;
+        background-color: transparent;
+        color: #f7f7f7;
+        transition: all 0.3s ease-out;
+      }
+      button:hover {
+        background-color: cyan;
+        color: black;
+        box-shadow: 0 4px 10px rgb(187, 238, 238);
+      }
+      p {
+        max-width: 200px;
+        transition: all 0.3s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Click to update</h1>
+      <button id="btn">Update</button>
+      <p id="para">This is a paragraph</p>
+    </div>
+    <script>
+      const btn = document.getElementById("btn");
+      const para = document.getElementById("para");
+      let text =
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+      btn.onclick = () => {
+        para.innerText = text;
+      };
+    </script>
+  </body>
+</html>
