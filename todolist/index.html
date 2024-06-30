@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #222;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .wrapper {
+        max-width: 50vw;
+        margin: 0 auto;
+        background-color: skyblue;
+        padding: 20px;
+      }
+      .input-con {
+        display: flex;
+        gap: 1rem;
+      }
+      input {
+        flex: 1;
+        padding: 4px 0 4px 6px;
+        font-size: 12px;
+        color: gray;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        background-color: #f7f7f7;
+      }
+      input[type="button"] {
+        background-color: blue;
+        color: white;
+      }
+      input[type="button"]:hover {
+        background-color: lightblue;
+        color: black;
+      }
+      #list-con {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .list {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        background-color: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>To do list</h1>
+    <div class="wrapper">
+      <div class="input-con">
+        <input type="text" name="todo-text" id="todo-text" />
+        <input type="date" name="todo-time" id="todo-time" />
+        <input type="button" value="Add" id="add-btn" />
+      </div>
+      <div id="list-con"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
