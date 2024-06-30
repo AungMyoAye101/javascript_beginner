@@ -8,18 +8,53 @@ const list = [];
 addBtn.onclick = () => {
   const text = todoText.value;
   const time = todoTime.value;
-  list.push({ text, time });
+  list.push({ text, time, isComplete: false });
   console.log(list);
   update();
 };
-const update = () => {
-  let listHtml;
-  list.map((item) => {
-    listHtml = `<div class='list'>
-    <p> ${item.text}</p>
-    <p>${item.time} </p>
-    <div> Edit</div>
-    </div>`;
+const isCompleted = (complete) => {
+  const completeList = document.querySelectorAll(".list");
+  list.map((item, i) => {
+    if (complete === i) {
+      item.isComplete = true;
+    }
+    if (item.isComplete) {
+      completeList[i].classList.add("isComplete");
+    }
   });
-  listCon.innerHTML += listHtml;
+};
+
+const edit = (i) => {
+  const currText = document.querySelectorAll(".current-text");
+  list[i].text = todoText.value;
+  list[i].time = todoTime.value;
+  update();
+};
+const update = () => {
+  let listHtml = "";
+  list.map((item, i) => {
+    listHtml += `<div class="list">
+          <div class="current-text">${item.text}</div>
+          <div>${item.time}</div>
+          <div class="btn-con">
+            <button id="complete" onclick='isCompleted(${i})'>Complete</button>
+            <button id="edit" onclick="edit(${i})">Edit</button>
+            <button id="remove" onclick='remove(${i})'>Remove</button>
+          </div>
+        </div>`;
+  });
+  listCon.innerHTML = listHtml;
+  todoText.value = "";
+  todoTime.value = "";
+  isCompleted();
+};
+
+// cta buttons
+const removeBtn = document.getElementById("remove");
+const editBtn = document.getElementById("edit");
+const completeBtn = document.getElementById("complete");
+// remove todo lists
+const remove = (i) => {
+  list.splice(i, 1);
+  update();
 };
