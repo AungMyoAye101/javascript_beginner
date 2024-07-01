@@ -24,12 +24,7 @@ const isCompleted = (complete) => {
       } else {
         completeList[i].classList.remove("isComplete");
       }
-      console.log(list);
-      // item.isComplete = true;
     }
-    // if (item.isComplete) {
-
-    // }
   });
 };
 
@@ -39,6 +34,12 @@ const edit = (i) => {
   list[i].time = todoTime.value;
   update();
 };
+// remove function
+const remove = (i) => {
+  list.splice(i, 1);
+  update();
+};
+
 const update = () => {
   let listHtml = "";
   list.map((item, i) => {
@@ -56,14 +57,4 @@ const update = () => {
   todoText.value = "";
   todoTime.value = "";
   isCompleted();
-};
-
-// cta buttons
-const removeBtn = document.getElementById("remove");
-const editBtn = document.getElementById("edit");
-const completeBtn = document.getElementById("complete");
-// remove todo lists
-const remove = (i) => {
-  list.splice(i, 1);
-  update();
 };
