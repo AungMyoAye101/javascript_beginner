@@ -9,18 +9,27 @@ addBtn.onclick = () => {
   const text = todoText.value;
   const time = todoTime.value;
   list.push({ text, time, isComplete: false });
-  console.log(list);
+
   update();
 };
+
+// is completed checker
 const isCompleted = (complete) => {
   const completeList = document.querySelectorAll(".list");
   list.map((item, i) => {
     if (complete === i) {
-      item.isComplete = true;
+      item.isComplete = item.isComplete ? false : true;
+      if (item.isComplete) {
+        completeList[i].classList.add("isComplete");
+      } else {
+        completeList[i].classList.remove("isComplete");
+      }
+      console.log(list);
+      // item.isComplete = true;
     }
-    if (item.isComplete) {
-      completeList[i].classList.add("isComplete");
-    }
+    // if (item.isComplete) {
+
+    // }
   });
 };
 

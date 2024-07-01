@@ -30,6 +30,9 @@ const formValidator = (e) => {
   }
   if (isValid) {
     alert("Form submitted successfully!");
+    name.value = "";
+    email.value = "";
+    password.value = "";
   } else {
     alert("Opps: Something wrong.");
   }
@@ -37,7 +40,3 @@ const formValidator = (e) => {
 
 // form submit
 formCon.addEventListener("submit", formValidator);
-
-const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-const pass = "Abc123456";
-console.log(passwordRegex.test(pass));

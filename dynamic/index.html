@@ -31,16 +31,16 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1>Click to update</h1>
+      <h1>Dynamic Content</h1>
       <button id="btn">Update</button>
-      <p id="para">This is a paragraph</p>
+      <p id="para">Click the update button to see changes</p>
     </div>
     <script>
       const btn = document.getElementById("btn");
       const para = document.getElementById("para");
-      let text =
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit.";
+
       btn.onclick = () => {
+        const text = prompt("Enter text...");
         para.innerText = text;
       };
     </script>
