@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+  </head>
+  <body>
+    <div id="quiz-container">
+      <!-- Questions will be rendered here -->
+    </div>
+    <button id="next-button">Next</button>
+
+    <script>
+      const questions = [
+        "Question 1",
+        "Question 2",
+        "Question 3",
+        "Question 4",
+        "Question 5",
+        "Question 6",
+      ];
+
+      let currentIndex = 0;
+      const questionsPerPage = 2;
+
+      function renderQuestions() {
+        const quizContainer = document.getElementById("quiz-container");
+        quizContainer.innerHTML = ""; // Clear previous questions
+
+        for (let i = 0; i < questionsPerPage; i++) {
+          const questionIndex = currentIndex + i;
+          if (questionIndex < questions.length) {
+            const questionElement = document.createElement("div");
+            questionElement.textContent = questions[questionIndex];
+            quizContainer.appendChild(questionElement);
+          }
+        }
+      }
+
+      document.getElementById("next-button").addEventListener("click", () => {
+        currentIndex += questionsPerPage;
+        if (currentIndex >= questions.length) {
+          currentIndex = 0; // Reset to the beginning or handle end of quiz as needed
+        }
+        renderQuestions();
+      });
+
+      // Initial render
+      renderQuestions();
+    </script>
+  </body>
+</html>
