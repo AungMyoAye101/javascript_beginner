@@ -22,6 +22,7 @@ const questions = [
 ];
 
 const quizeCon = document.getElementById("container");
+const result = document.getElementById("result");
 // initial render
 
 let currIndex = 0;
@@ -29,6 +30,7 @@ let questionPerPage = 2;
 
 const render = () => {
   quizeCon.innerHTML = "";
+  result.innerHTML = "";
   for (let i = 0; i < questionPerPage; i++) {
     const questionIndex = currIndex + i;
 
@@ -49,34 +51,26 @@ const render = () => {
   }
 };
 render();
+const checkAnswer = () => {
+  let scores = 0;
+  for (let i = 0; i < questionPerPage; i++) {
+    const questionIndex = currIndex + i;
+    const selectedAnswer = document.querySelector(
+      `input[name="question${questionIndex}"]:checked`
+    );
+    if (
+      selectedAnswer &&
+      selectedAnswer.value === questions[questionIndex].answer
+    ) {
+      scores++;
+    }
+  }
+  result.textContent = `Scores: ${scores} / ${questionPerPage}`;
+};
 
-// // check answer
-// const checkAnswer = (question) => {
-//   let scores = 0;
-//   question.map((q, i) => {
-//     const selectedAnswer = document.querySelector(
-//       `input[name="question${i}"]:checked`
-//     );
-//     if (selectedAnswer && selectedAnswer.value === q.answer) {
-//       scores++;
-//     }
-//   });
-//   console.log(scores);
-//   document.getElementById(
-//     "result"
-//   ).textContent = `Scores ${scores} / ${question.length}`;
-// };
-// // next question section
-// const nextQues = () => {
-//   let initialNum = 0;
-//   const nextQ = questions.slice(initialNum, initialNum + 2);
-//   initialNum += 2;
-//   updateQuestion(nextQ);
-// };
-// nextQues();
-// document.getElementById("btn").onclick = () => {
-//   checkAnswer(questions);
-// };
+document.getElementById("btn").onclick = () => {
+  checkAnswer();
+};
 document.getElementById("next").onclick = () => {
   currIndex = +questionPerPage;
   render();
