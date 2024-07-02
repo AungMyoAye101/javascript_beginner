@@ -13,30 +13,36 @@ const questions = [
   },
 ];
 const updateQuestion = () => {
-  let questionHtml = "";
   questions.map((ques, i) => {
-    questionHtml += `
-    <div class="quize-con">
-          <h3>${ques.question}</h3>
-          <div id="options">
-           
-          
-        </div>
-    `;
-    console.log(document.getElementById("options"));
-    // optionQuize(ques.options, i);
+    const divCon = document.createElement("div");
+    divCon.innerHTML = `<h3> ${ques.question}</h3>`;
+    const optCon = document.createElement("div");
+    ques.options.map((opt) => {
+      const label = document.createElement("label");
+      label.innerHTML += `<input type="radio" name="question${i}" value="${opt}" /> ${opt} `;
+      optCon.appendChild(label);
+    });
+
+    divCon.appendChild(optCon);
+    quizeCon.appendChild(divCon);
   });
-  quizeCon.innerHTML = questionHtml;
-};
-const optionQuize = (opt, i) => {
-  const optionLabel = document.getElementById("options");
-  let html = "";
-  opt.map((option) => {
-    html += ` <label>
-    <input type="radio" name="question${i}" value="${option}" />
-    ${option}
-  </label>`;
-  });
-  optionLabel.innerHTML = html;
 };
 updateQuestion();
+
+// check answer
+const checkAnswer = () => {
+  let scores = 0;
+  questions.map((q, i) => {
+    const selectedAnswer = document.querySelector(
+      `input[name="question${i}"]:checked`
+    );
+    if (selectedAnswer && selectedAnswer.value === q.answer) {
+      scores++;
+    }
+  });
+  console.log(scores);
+  document.getElementById(
+    "result"
+  ).textContent = `Scores ${scores} / ${questions.length}`;
+};
+document.getElementById("btn").addEventListener("click", checkAnswer);
